@@ -124,120 +124,118 @@ import java.awt.event.*;
 	            } else { 
 	                 for (j=0;j<7;j++ ) { 
 	                        if (grid[x0][j]==0){ //determine button in the same line with the first button is empty
-	   if (y>j) { //如果第二个按钮的Y坐标大于空按钮的Y坐标说明第一按钮在第二按钮左边 
-	   for (i=y-1;i>=j;i-- ){ //判断第二按钮左侧直到第一按钮中间有没有按钮 
+	   if (y>j) { 
+           //if y-coordinate of second button is larger than that of empty button indicating that first button is on the left of second button
+	   for (i=y-1;i>=j;i-- ){ //determine if there is button between left of second button to first button 
 	   if (grid[x][i]!=0) { 
 	   k=0; 
 	   break; 
-	        } else { k=1; } //K=1说明通过了第一次验证 
+	        } else { k=1; } //k = 1 indicating k passes the test
 	} 
 	if (k==1) { 
-	linePassOne(); 
+	   linePassOne(); 
+	   } 
 	} 
-	} 
-	if (y<j){ //如果第二个按钮的Y坐标小于空按钮的Y坐标说明第一按钮在第二按钮右边 
-	for (i=y+1;i<=j ;i++ ){ //判断第二按钮左侧直到第一按钮中间有没有按钮 
-	if (grid[x][i]!=0){ 
-	k=0; 
-	break; 
-	} 
-	else { k=1; } 
+	if (y<j){ //if y-coordinate of second button is smaller than that of empty button indicating that first button is on the right of second button 
+	   for (i=y+1;i<=j ;i++ ){ //determine if there is button between right of second button to first button 
+	      if (grid[x][i]!=0){ 
+	        k=0; 
+	        break; 
+	} else { k=1; } 
 	} 
 	if (k==1){ 
-	linePassOne(); 
-	} 
+	   linePassOne(); 
+	   } 
 	} 
 	if (y==j ) { 
-	linePassOne(); 
-	} 
+	   linePassOne(); 
+	    } 
 	} 
 	if (k==2) { 
-	if (x0==x) { 
-	remove(); 
+	   if (x0==x) { 
+	     remove(); 
 	} 
 	if (x0<x) { 
-	for (n=x0;n<=x-1;n++ ) { 
-	if (grid[n][j]!=0) { 
-	k=0; 
-	break; 
+	   for (n=x0;n<=x-1;n++ ) { 
+	   if (grid[n][j]!=0) { 
+	      k=0; 
+	      break; 
 	} 
 	if(grid[n][j]==0 && n==x-1) { 
-	remove(); 
-	} 
-	} 
+	    remove(); 
+	     } 
+	   } 
 	} 
 	if (x0>x) { 
-	for (n=x0;n>=x+1 ;n-- ) { 
-	if (grid[n][j]!=0) { 
-	k=0; 
-	break; 
+	    for (n=x0;n>=x+1 ;n-- ) { 
+	       if (grid[n][j]!=0) { 
+	          k=0; 
+	          break; 
 	} 
 	if(grid[n][j]==0 && n==x+1) { 
-	remove(); 
+	   remove(); 
+	   } 
 	} 
 	} 
 	} 
 	} 
-	} 
-	for (i=0;i<8;i++ ) { //列 
-	if (grid[i][y0]==0) { 
-	if (x>i) { 
-	for (j=x-1;j>=i ;j-- ) { 
-	if (grid[j][y]!=0) { 
-	k=0; 
-	break; 
-	} 
-	else { k=1; } 
-	} 
-	if (k==1) { 
-	rowPassOne(); 
-	} 
-	} 
-	if (x<i) { 
-	for (j=x+1;j<=i;j++ ) { 
-	if (grid[j][y]!=0) { 
-	k=0; 
-	break; 
-	} 
-	else { k=1; } 
-	} 
-	if (k==1) { 
-	rowPassOne(); 
-	} 
-	} 
-	if (x==i) { 
-	rowPassOne(); 
-	} 
-	} 
-	if (k==2){ 
-	if (y0==y) { 
-	remove(); 
-	} 
-	if (y0<y) { 
-	for (n=y0;n<=y-1 ;n++ ) { 
-	if (grid[i][n]!=0) { 
-	k=0; 
-	break; 
-	} 
-	if(grid[i][n]==0 && n==y-1) { 
-	remove(); 
-	} 
-	} 
-	} 
-	if (y0>y) { 
-	for (n=y0;n>=y+1 ;n--) { 
-	if (grid[i][n]!=0) { 
-	k=0; 
-	break; 
-	} 
-	if(grid[i][n]==0 && n==y+1) { 
-	remove(); 
-	} 
-	} 
-	} 
-	} 
-	} 
-	} 
+	for (i=0;i<8;i++ ) { //column
+	    if (grid[i][y0]==0) { 
+	        if (x>i) { 
+	           for (j=x-1;j>=i ;j-- ) { 
+	                if (grid[j][y]!=0) { 
+	                    k=0; 
+	                    break; 
+	                   } else { k=1; } 
+	             } 
+	          if (k==1) { 
+	              rowPassOne(); 
+	              } 
+	           } 
+	          if (x<i) { 
+	             for (j=x+1;j<=i;j++ ) { 
+	                  if (grid[j][y]!=0) { 
+	                     k=0; 
+	                     break; 
+	                  } else { k=1; } 
+	               } 
+	           if (k==1) { 
+	              rowPassOne(); 
+	              } 
+	           } 
+	           if (x==i) { 
+	               rowPassOne(); 
+	           } 
+	       } 
+	           if (k==2){ 
+	               if (y0==y) { 
+	                  remove(); 
+	                } 
+	               if (y0<y) { 
+	                  for (n=y0;n<=y-1 ;n++ ) { 
+	                     if (grid[i][n]!=0) { 
+	                        k=0; 
+	                        break; 
+	                      } 
+	                     if(grid[i][n]==0 && n==y-1) { 
+	                       remove(); 
+	                      } 
+	                   } 
+	               } 
+	            if (y0>y) { 
+	               for (n=y0;n>=y+1 ;n--) { 
+	                   if (grid[i][n]!=0) { 
+	                       k=0; 
+	                       break; 
+	                       } 
+	           if(grid[i][n]==0 && n==y+1) { 
+	          remove(); 
+	            } 
+	         } 
+	       } 
+	     } 
+	   } 
+	  }  
 	} 
 	public void linePassOne(){ 
 	if (y0>j){ //第一按钮同行空按钮在左边 
