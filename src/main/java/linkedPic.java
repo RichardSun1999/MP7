@@ -238,44 +238,40 @@ import java.awt.event.*;
 	  }  
 	} 
 	public void linePassOne(){ 
-	if (y0>j){ //第一按钮同行空按钮在左边 
-	for (i=y0-1;i>=j ;i-- ){ //判断第一按钮同左侧空按钮之间有没按钮 
-	if (grid[x0][i]!=0) { 
-	k=0; 
-	break; 
+	if (y0>j){ //the empty button in the same line as first button 
+	   for (i=y0-1;i>=j ;i-- ){ //determine if there is button between first button and empty button  on the left
+	      if (grid[x0][i]!=0) { 
+	          k=0; 
+	          break; 
+	      } else { k=2; } //K=2 indicating it passes the test  
+	    } 
 	} 
-	else { k=2; } //K=2说明通过了第二次验证 
-	} 
-	} 
-	if (y0<j){ //第一按钮同行空按钮在与第二按钮之间 
-	for (i=y0+1;i<=j ;i++){ 
-	if (grid[x0][i]!=0) { 
-	k=0; 
-	break; 
-	} 
-	else{ k=2; } 
-	} 
-	} 
+	if (y0<j){ //the empty button is the same line as the first button is between first button and second button  
+	   for (i=y0+1;i<=j ;i++){ 
+	     if (grid[x0][i]!=0) { 
+	        k=0; 
+	        break; 
+	      } else{ k=2; } 
+	    } 
+	  } 
 	} 
 	public void rowPassOne(){ 
 	if (x0>i) { 
-	for (j=x0-1;j>=i ;j-- ) { 
-	if (grid[j][y0]!=0) { 
-	k=0; 
-	break; 
-	} 
-	else { k=2; } 
-	} 
+	   for (j=x0-1;j>=i ;j-- ) { 
+	       if (grid[j][y0]!=0) { 
+	          k=0; 
+	          break; 
+	        } else { k=2; } 
+	     } 
 	} 
 	if (x0<i) { 
-	for (j=x0+1;j<=i ;j++ ) { 
-	if (grid[j][y0]!=0) { 
-	k=0; 
-	break; 
-	} 
-	else { k=2; } 
-	} 
-	} 
+	     for (j=x0+1;j<=i ;j++ ) { 
+	        if (grid[j][y0]!=0) { 
+	           k=0; 
+	           break; 
+	         } else { k=2; } 
+	       } 
+	    } 
 	} 
 	public void remove(){ 
 	firstButton.setVisible(false); 
@@ -298,17 +294,17 @@ import java.awt.event.*;
 	if(e.getSource()==exitButton) 
 	System.exit(0); 
 	if(e.getSource()==resetButton) 
-	reload(); 
-	for(int cols = 0;cols < 6;cols++){ 
-	for(int rows = 0;rows < 5;rows++ ){ 
-	if(e.getSource()==diamondsButton[cols][rows]) 
-	estimateEven(cols+1,rows+1,diamondsButton[cols][rows]); 
-	} 
-	} 
-	} 
+	   reload(); 
+	   for(int cols = 0;cols < 6;cols++){ 
+	       for(int rows = 0;rows < 5;rows++ ){ 
+	          if(e.getSource()==diamondsButton[cols][rows]) 
+	             estimateEven(cols+1,rows+1,diamondsButton[cols][rows]); 
+	           } 
+	       } 
+	  } 
 	public static void main(String[] args) { 
 	linkedPic llk = new linkedPic(); 
 	llk.randomBuild(); 
 	llk.init(); 
-	} 
+	   } 
 	} 
